@@ -71,32 +71,6 @@ class DetailPage extends StatelessWidget {
               ),
             ),
             const Spacer(),
-            // Buy Button
-            Center(
-              child: ElevatedButton(
-                onPressed: () {
-                  // Handle buy action
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Product $productName added to cart!')),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromARGB(255, 68, 108, 192),
-                  foregroundColor: Colors.white,
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 40.0,
-                    vertical: 15.0,
-                  ),
-                ),
-                child: Text(
-                  'Buy Now',
-                  style: GoogleFonts.poppins(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
           ],
         ),
       ),
