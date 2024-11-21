@@ -1,193 +1,172 @@
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+// Mengimpor paket-paket yang diperlukan
+import 'package:flutter/material.dart';  // Paket untuk komponen Material Design
+import 'package:google_fonts/google_fonts.dart';  // Paket untuk menggunakan font dari Google Fonts
+import 'colors.dart';  // Mengimpor file colors.dart untuk warna khusus aplikasi
 
-import 'colors.dart';
-
+// Halaman login menggunakan StatefulWidget
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+  const LoginPage({super.key});  // Konstruktor untuk LoginPage
 
+  // Membuat state untuk LoginPage
   @override
   _LoginPageState createState() => _LoginPageState();
 }
 
+// State dari LoginPage
 class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
-    // TODO: Add text editing controllers (101)
+    // Controller untuk TextField username dan password
     final usernameController = TextEditingController();
     final passwordController = TextEditingController();
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
+
+    // Scaffold adalah struktur dasar dari halaman
     return Scaffold(
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.start,
+      body: Center(  // Menempatkan semua widget di tengah layar
+        child: Column(  // Menyusun widget secara vertikal
+          mainAxisAlignment: MainAxisAlignment.start,  // Menyusun widget dari atas ke bawah
           children: <Widget>[
-            const SizedBox(height: 60.0),
+            const SizedBox(height: 60.0),  // Memberikan jarak dari atas
+            // Kolom untuk menampilkan logo aplikasi
             Column(
               children: <Widget>[
-                Image.asset(
+                Image.asset(  // Menampilkan gambar dengan menggunakan asset
                   'pedulipanti.png',
-                  width: 100.0,  // Set width to scale the image
-                  height: 100.0, // Set height to scale the image
-                  fit: BoxFit.contain,  // Ensure the aspect ratio is maintained
-                  ),
-                const SizedBox(height: 16.0),
+                  width: 100.0,  // Lebar gambar
+                  height: 100.0, // Tinggi gambar
+                  fit: BoxFit.contain,  // Menjaga rasio aspek gambar
+                ),
+                const SizedBox(height: 16.0),  // Memberikan jarak setelah gambar
               ],
             ),
-            const SizedBox(height: 30.0),
-            // TODO: Add TextField widgets (101)
-            // [Name]
+            const SizedBox(height: 30.0),  // Jarak setelah logo
+            // Menampilkan teks "Welcome to Peduli Panti"
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0), // Adjust padding as needed
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),  // Padding kiri dan kanan
               child: Text(
-                'Welcome to Peduli Panti',
-                style: GoogleFonts.poppins(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                  color: const Color.fromARGB(255, 30, 31, 78),
+                'Welcome to Peduli Panti',  // Teks yang ditampilkan
+                style: GoogleFonts.poppins(  // Menggunakan font Poppins dari Google Fonts
+                  fontSize: 22,  // Ukuran font
+                  fontWeight: FontWeight.bold,  // Menebalkan font
+                  color: const Color.fromARGB(255, 30, 31, 78),  // Warna teks
                 ),
-                textAlign: TextAlign.center,
+                textAlign: TextAlign.center,  // Menyelaraskan teks ke tengah
               ),
             ),
-            const SizedBox(height: 10.0),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0), // Adjust padding as needed
-              child: Text(
-                'Please log in first before making a donation and contributing to our cause',
-                style: GoogleFonts.poppins(
-                  fontSize: 18,
-                  color:const Color.fromARGB(255, 30, 31, 78),
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            const SizedBox(height: 70.0),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0), // Adjust padding as needed
-              child: TextField(
-                controller: usernameController,
-                decoration: InputDecoration(
-                  labelText: 'Username',
-                  hintText: 'Enter your username',
-                  prefixIcon: const Icon(Icons.person, color: Color.fromARGB(255, 30, 31, 78)),
-                  labelStyle: GoogleFonts.poppins( // Apply Poppins font to label
-                    fontSize: 14.0, // Font size for the label text
-                    color: const Color.fromARGB(255, 30, 31, 78), // Label text color
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12.0), // Membuat border melengkung
-                    borderSide: const BorderSide(color: Color.fromARGB(255, 68, 108, 192)),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12.0),
-                    borderSide: const BorderSide(
-                      color: Color.fromARGB(255, 68, 108, 192), // Warna border saat fokus
-                      width: 2.0, // Ketebalan border saat fokus
-                    ),
-                  ),
-                ),
-                style: GoogleFonts.poppins( // Apply Poppins font here
-                  fontSize: 14.0, // Adjust font size as needed
-                  color: Colors.black87, // Text color
-                ),
-              ),
-            ),
-            // spacer
-            const SizedBox(height: 20.0),
-            // [Password]
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0), // Adjust padding as needed
-              child:TextField(
-              controller: passwordController,
-              decoration: InputDecoration(
-                labelText: 'Password',
-                hintText: 'Enter your password',
-                prefixIcon: const Icon(Icons.lock, color: Color.fromARGB(255, 30, 31, 78)),
-                labelStyle: GoogleFonts.poppins( // Apply Poppins font to label
-                  fontSize: 14.0, // Font size for the label text
-                  color: const Color.fromARGB(255, 30, 31, 78), // Label text color
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12.0),
-                  borderSide: const BorderSide(color: Color.fromARGB(255, 68, 108, 192)),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12.0),
-                  borderSide: const BorderSide(color: Color.fromARGB(255, 68, 108, 192), width: 2.0),
-                ),
-              ),
-              style: GoogleFonts.poppins( // Apply Poppins font here
-                fontSize: 14.0, // Adjust font size as needed
-                color: Colors.black87, // Text color
-              ),
-              obscureText: true,
-            ),
-            ),
-            const SizedBox(height: 20.0),
-            // TODO: Add button bar (101)
+            const SizedBox(height: 10.0),  // Jarak antar teks
+            // Menampilkan teks deskripsi "Please log in first..."
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: OverflowBar(
-              alignment: MainAxisAlignment.end,
-              // TODO: Add a beveled rectangular border to CANCEL (103)
-              children: <Widget>[
-                // TODO: Add buttons (101)
-                TextButton(
-                  onPressed: () {
-                    usernameController.clear();
-                    passwordController.clear();
-                  },
-                  style: TextButton.styleFrom(
-                    foregroundColor: kShrineBrown900,
-                    shape: const BeveledRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(7.0)),
-                    ),
-                  ),
-                  child: Text('CANCEL'),
+              child: Text(
+                'Please log in first before making a donation and contributing to our cause',
+                style: GoogleFonts.poppins(  // Font Poppins
+                  fontSize: 18,  // Ukuran font
+                  color: const Color.fromARGB(255, 30, 31, 78),  // Warna teks
                 ),
-                // TODO: Add an elevation to NEXT (103)
-                // TODO: Add a beveled rectangular border to NEXT (103)
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushReplacementNamed(context, '/'); // Pindah ke route "/"
+                textAlign: TextAlign.center,  // Teks rata tengah
+              ),
+            ),
+            const SizedBox(height: 70.0),  // Jarak setelah deskripsi
+            // Menampilkan TextField untuk memasukkan username
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              child: TextField(
+                controller: usernameController,  // Menggunakan controller untuk mengelola input
+                decoration: InputDecoration(
+                  labelText: 'Username',  // Label untuk TextField
+                  hintText: 'Enter your username',  // Petunjuk untuk TextField
+                  prefixIcon: const Icon(Icons.person, color: Color.fromARGB(255, 30, 31, 78)),  // Ikon untuk username
+                  labelStyle: GoogleFonts.poppins(  // Menggunakan font Poppins untuk label
+                    fontSize: 14.0,
+                    color: const Color.fromARGB(255, 30, 31, 78),
+                  ),
+                  border: OutlineInputBorder(  // Border dari TextField
+                    borderRadius: BorderRadius.circular(12.0),  // Radius untuk sudut border
+                    borderSide: const BorderSide(color: Color.fromARGB(255, 68, 108, 192)),  // Warna border
+                  ),
+                  focusedBorder: OutlineInputBorder(  // Border saat TextField mendapatkan fokus
+                    borderRadius: BorderRadius.circular(12.0),
+                    borderSide: const BorderSide(color: Color.fromARGB(255, 68, 108, 192), width: 2.0),  // Border lebih tebal
+                  ),
+                ),
+                style: GoogleFonts.poppins(  // Font untuk teks yang dimasukkan
+                  fontSize: 14.0,
+                  color: Colors.black87,  // Warna teks
+                ),
+              ),
+            ),
+            const SizedBox(height: 20.0),  // Jarak antar TextField
+            // Menampilkan TextField untuk memasukkan password
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              child: TextField(
+                controller: passwordController,  // Controller untuk password
+                decoration: InputDecoration(
+                  labelText: 'Password',  // Label untuk TextField password
+                  hintText: 'Enter your password',  // Petunjuk untuk TextField password
+                  prefixIcon: const Icon(Icons.lock, color: Color.fromARGB(255, 30, 31, 78)),  // Ikon untuk password
+                  labelStyle: GoogleFonts.poppins(  // Menggunakan font Poppins untuk label
+                    fontSize: 14.0,
+                    color: const Color.fromARGB(255, 30, 31, 78),
+                  ),
+                  border: OutlineInputBorder(  // Border dari TextField
+                    borderRadius: BorderRadius.circular(12.0),
+                    borderSide: const BorderSide(color: Color.fromARGB(255, 68, 108, 192)),  // Warna border
+                  ),
+                  focusedBorder: OutlineInputBorder(  // Border saat TextField mendapatkan fokus
+                    borderRadius: BorderRadius.circular(12.0),
+                    borderSide: const BorderSide(color: Color.fromARGB(255, 68, 108, 192), width: 2.0),  // Border lebih tebal
+                  ),
+                ),
+                style: GoogleFonts.poppins(  // Font untuk teks yang dimasukkan
+                  fontSize: 14.0,
+                  color: Colors.black87,
+                ),
+                obscureText: true,  // Menyembunyikan teks yang dimasukkan (untuk password)
+              ),
+            ),
+            const SizedBox(height: 20.0),  // Jarak antar TextField
+            // Menampilkan tombol untuk membatalkan atau melanjutkan
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              child: OverflowBar(  // Menggunakan OverflowBar untuk menyusun tombol
+                alignment: MainAxisAlignment.end,  // Menyusun tombol ke kanan
+                children: <Widget>[
+                  // Tombol Cancel
+                  TextButton(
+                    onPressed: () {
+                      usernameController.clear();  // Menghapus input username
+                      passwordController.clear();  // Menghapus input password
                     },
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: kShrineBlue500,
-                      backgroundColor: kShrineBlue100,
-                      elevation: 8.0,
-                      shape: const BeveledRectangleBorder(
+                    style: TextButton.styleFrom(
+                      foregroundColor: kShrineBrown900,  // Warna teks tombol
+                      shape: const BeveledRectangleBorder(  // Bentuk tombol dengan sudut melengkung
                         borderRadius: BorderRadius.all(Radius.circular(7.0)),
                       ),
                     ),
-                  child: Text('NEXT'),
-                ),
-              ],
-            ),
+                    child: Text('CANCEL'),  // Teks pada tombol
+                  ),
+                  // Tombol Next
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushReplacementNamed(context, '/');  // Pindah ke route "/" setelah tombol ditekan
+                    },
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: kShrineBlue500,  // Warna teks tombol
+                      backgroundColor: kShrineBlue100,  // Warna latar belakang tombol
+                      elevation: 8.0,  // Tingkat elevasi tombol
+                      shape: const BeveledRectangleBorder(  // Bentuk tombol dengan sudut melengkung
+                        borderRadius: BorderRadius.all(Radius.circular(7.0)),
+                      ),
+                    ),
+                    child: Text('NEXT'),  // Teks pada tombol
+                  ),
+                ],
+              ),
             ),
           ],
         ),
       ),
-     // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
